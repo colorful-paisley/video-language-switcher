@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video Language Switcher</title>
+  <title>Video Player – learn.mp4</title>
 
   <!-- Video.js + SEA theme -->
   <link href="https://cdn.jsdelivr.net/npm/video.js@8.10.0/dist/video-js.min.css" rel="stylesheet" />
@@ -13,17 +13,11 @@
   <style>
     body {
       margin: 0;
-      background: #f2f2f2;
+      background: transparent;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      font-family: sans-serif;
-    }
-
-    h1 {
-      margin-bottom: 20px;
     }
 
     .video-container {
@@ -33,7 +27,6 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
     }
 
     .video-js {
@@ -55,19 +48,9 @@
       background-color: rgba(200, 200, 200, 0.5);
       background-image: none !important;
     }
-
-    #language-selector {
-      font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      background: white;
-    }
   </style>
 </head>
 <body>
-
-  <h1>🎬 Wersja językowa</h1>
 
   <div class="video-container">
     <video
@@ -77,35 +60,12 @@
       preload="auto"
       data-setup="{}"
     >
-      <source src="videos/film-pl.mp4" type="video/mp4" />
+      <source src="Learn.mp4" type="video/mp4" />
       <p class="vjs-no-js">
         Aby obejrzeć to wideo, włącz JavaScript lub użyj nowoczesnej przeglądarki.
       </p>
     </video>
   </div>
-
-  <select id="language-selector">
-    <option value="videos/film-pl.mp4">English</option>
-    <option value="videos/film-en.mp4">Polish</option>
-    <option value="videos/film-de.mp4">Dutch</option>
-  </select>
-
-  <script>
-    const player = videojs('my-video');
-
-    document.getElementById('language-selector').addEventListener('change', function (e) {
-      const newSrc = e.target.value;
-      const currentTime = player.currentTime();
-      const wasPaused = player.paused();
-
-      player.src({ type: "video/mp4", src: newSrc });
-
-      player.ready(function () {
-        player.currentTime(currentTime);
-        if (!wasPaused) player.play();
-      });
-    });
-  </script>
 
 </body>
 </html>
